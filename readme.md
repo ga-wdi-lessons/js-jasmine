@@ -379,9 +379,9 @@ describe( "A snowman", function(){
 
 ...and now the test passes!
 
-# Review: Test-Driven Development Basics
+# The Process, Recontextualized (5/110)
 
-### The Process, Recontextualized (5/110)
+### Test-driven development
 
 ![tdd flowchart](img/tdd.png)
 
@@ -402,16 +402,19 @@ You write a failing test. Your next step is to write code that will make your te
 
 This process is often abbreviated **Red, Green, Refactor**: write a failing test, write the code to make it pass, then refactor. Lather, rinse repeat.
 
-#### TDD vs. BDD
+### TDD vs. BDD
 
 - TDD is mainly a process to help developers create a well-written unit of code that does a set of tasks. And to allow developers to be confident in their code.
+> TDD ensures that you built the software correctly, not that the correct software was built.
 
 - BDD combines the TDD process with ideas from DDD (domain-driven design). The biggest difference is that the syntax reads more like english and could be shared with non-programmers as specification for what the code should do.
+>BDD codifies customer requirements into discrete, real-life scenarios.
+
   - Jasmine is a behavior driven framework
 
 Check out this great article on [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
 
-### In the "real world"... (10/120)
+# In the "real world"... (10/120)
 
 ...at this point we would write one more expectation, then write the code to
 make it pass, then write the next expectation, and so on, doing everything **one
