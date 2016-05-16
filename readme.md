@@ -1,4 +1,4 @@
-## Learning Objectives
+# Testing with Jasmine
 
 ## Screencasts
 
@@ -20,20 +20,20 @@
 Why isn't testing more common?
 
 * Cons
-* **Time.** It's a waste of my time and effort to test.
-* **It's too much.** I can test just fine using the console.
-* **App complexity.** My app is too simple to require testing.
+  * **Time.** It's a waste of my time and effort to test.
+  * **It's too much.** I can test just fine using the console.
+  * **App complexity.** My app is too simple to require testing.
 
 Why bother testing?
 
 * Pros
- * **Bug detection.** Quickly identify unanticipated errors.
- * **Code Quality.** Create standards for our code before writing it.
- * **Time.** Shorten development time through bug detection.
- * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
- * **Jobs.** Testing is a job requirement across the board.
+  * **Bug detection.** Quickly identify unanticipated errors.
+  * **Code Quality.** Create standards for our code before writing it.
+  * **Time.** Shorten development time through bug detection.
+  * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
+  * **Jobs.** Testing is a job requirement across the board.
 
-## All Together Now (10/20)
+### All Together Now (10/20)
 
 When it comes to development in teams, both the benefits and the potential pitfalls of testing practices increase. Many feel that testing is essential when working on large, complex projects.
 
@@ -52,13 +52,7 @@ bases and ensuring that test suites are adequately maintained as an application
 grows in complexity. BOTH of these can be avoided by using TDD as a tool for
 ***planning***.  
 
-<!-- TODO: Unit vs Acceptance
-- Tests are not for anticipated errors
-- Tests are for working projects
-http://stackoverflow.com/questions/4139095/unit-tests-vs-acceptance-tests
--->
-
-## Do you wanna build a snowman?
+### Do you wanna build a snowman?
 
 For example, imagine you're Elsa from Frozen, creating a simple program/app that
 will build a snowman.
@@ -77,7 +71,7 @@ to do? What should the snowmen it creates be like?
 
 Now that we have an English-y outline, we're going to start turning it into tests.
 
-## Jasmine?
+### Jasmine?
 
 Today we'll be using a Javascript testing framework called Jasmine. It's the
 same thing as RSpec, just for Javascript. It uses "describe" and "it", just like
@@ -95,7 +89,10 @@ Tests follow a "describe...it" format, like so:
 
 Jasmine is only one of many testing framework. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
 
-## Getting set up (5/55)
+- [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
+
+#### Getting set up (5/55)
+
 First, we're going to install jasmine-node globally.
 
 It doesn't matter where you run this code:
@@ -277,7 +274,7 @@ Now that we have the pieces of our snowman builder described, we can start think
   * Begins with `expect`. Takes one argument, the variable whose value we are testing.
   * Followed by a **matcher** (e.g., `toBe`), which tests the expectation in a particular way.
 
-## Jasmine's built-in matchers
+### Jasmine's built-in matchers
 
 ```txt
 'toBe' matcher compares with ===
@@ -384,13 +381,9 @@ describe( "A snowman", function(){
 
 # Review: Test-Driven Development Basics
 
-## The Process, Recontextualized (5/110)
+### The Process, Recontextualized (5/110)
 
-<!-- IDEA Change image?
-[red green refactor](https://www.google.com/search?q=red+green+refactor&espv=2&biw=840&bih=975&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiX_K6k497MAhUDzoMKHXgpCDQQ_AUIBygC#imgrc=ZKZxrYKBbV371M%3A)
--->
-
-![tdd flowchart](img/tdd-flowchart.png)
+![tdd flowchart](img/tdd.png)
 
 A planning-oriented approach TDD
   - **Think.**
@@ -409,11 +402,16 @@ You write a failing test. Your next step is to write code that will make your te
 
 This process is often abbreviated **Red, Green, Refactor**: write a failing test, write the code to make it pass, then refactor. Lather, rinse repeat.
 
-<!-- TODO: TDD vs BDD -->
+#### TDD vs. BDD
 
-## In the "real world"... (10/120)
+- TDD is mainly a process to help developers create a well-written unit of code that does a set of tasks. And to allow developers to be confident in their code.
 
-<!-- TODO Garnet-->
+- BDD combines the TDD process with ideas from DDD (domain-driven design). The biggest difference is that the syntax reads more like english and could be shared with non-programmers as specification for what the code should do.
+  - Jasmine is a behavior driven framework
+
+Check out this great article on [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+
+### In the "real world"... (10/120)
 
 ...at this point we would write one more expectation, then write the code to
 make it pass, then write the next expectation, and so on, doing everything **one
@@ -474,8 +472,6 @@ You have two goals:
 - ...while still being valid Javascript: you close all your parentheses, put semicolons where you need them, and so on.
 
 Consider: What variables do you need to test? From an English perspective, what names would it make sense for the different variables and methods to have?
-
-**Take 5 minutes** to add expectations yourself. Then, meet up with your group of 3 and take 5 minutes to review each others expectations.
 
 ## Refactor (10/150)
 
@@ -590,6 +586,26 @@ The snowman code is available here:
 
 https://github.com/ga-dc/snowman_building_with_jasmine
 
+# Testing Terminology
+
+### Test Types: Unit vs. Integration vs. End-to-End
+
+> “If you wish to converse with me –define your terms” ~Voltaire
+
+- **Unit Tests**
+Unit tests isolate the smallest piece of a feature, typically a method/function in isolation. In short, unit tests are as simple as possible, easy to debug, reliable (due to reduced external factors), fast to execute and help to prove that the smallest building blocks of your program function as intended before they're put together. The caveat is that, although you can prove they work perfectly in isolation, the units of code may blow up when combined.
+
+- **Integration Tests**
+An integration test takes a small group of units, often two units, and tests their behavior as a whole, verifying that they coherently work together. Sometimes you need to have tests to verify that two separate systems – like a database and your app – work together correctly, and that calls for an integration test. As a result, when validating integration test results, you could for example validate a database related test by querying the database to check the database state is correct.
+
+- **End-to-end/Acceptance/Functional Tests**
+Involve performing tests on the full system (e.g. using your web page via a web browser) to see whether the application's functionality satisfies the specification. E.g. "clicking a zoom icon should enlarge the document view by 25%." There is no real continuum of results, just a pass or fail outcome.
+_**Note** All three generally mean the same thing but not always_
+
+![testing pyramid](img/testing-pyramid.png)
+
+> As a good first guess, Google often suggests a 70/20/10 split: 70% unit tests, 20% integration tests, and 10% end-to-end tests. The exact mix will be different for each team, but in general, it should retain that pyramid shape.
+
 ## Quiz Questions
 - Put the following actions in order, from what should happen first to what should happen last:
   1. Write the code for your app
@@ -609,17 +625,12 @@ https://github.com/ga-dc/snowman_building_with_jasmine
 - What does `beforeEach` do?
   > Contains code that is run before each spec
 
-<!-- TODO: Different types of tests
-Feature spec vs Model specs
-End to end tests
--->
-
-<!-- TODO: Comparison b/t jasmine & rspec syntax -->
-
-- [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
-
 ## Additional Reading
 
 * [Jasmine's really great documentation](http://jasmine.github.io/2.1/introduction.html)
+* [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
 * [Creating Custom Matchers in Jasmine](http://jasmine.github.io/2.0/custom_matcher.html)
 * [Testing AJAX Calls with Jasmine](http://jasmine.github.io/2.1/ajax.html)
+* [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+* [Say no to more E2E testing](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
+* [Unit vs. functional vs acceptance vs integration](http://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test#answer-4904533)
