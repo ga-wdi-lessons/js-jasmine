@@ -17,6 +17,52 @@
 
 # Do You Even Test, Bro?
 
+### Why do we implement tests in our applications? (5 min)
+
+As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.  
+
+Think back to the way you code.  You create a part of a web page, then you browse to that page to test it.  To ensure that it is doing as you expect.  Then you add another feature.  And test both features.  Then you add a third feature and test... just the third feature.  Imagine if you had a battery of automated specs, which run against your code, so you can see if your new changes fit your new requirements and EVERY requirement that came before this.
+
+### Unit testing (5 min)
+
+**Unit tests** check the smallest level. The functionality of a specific method.
+
+  * The "units" in unit tests are individual methods. Unit tests are intended to test small, little blocks of code, and make sure a specific input results in a specific output.
+
+  * As a rule of thumb, a good unit test should not be more than 5 lines long.
+
+**Employers give you major bonus points for it!**
+
+You'll see the term **test coverage** pop up pretty often. People are always aiming for "100% test coverage". If your app has 100% test coverage, that means every single method in your app has a unit test verifying that it works.
+
+>For instance, while it's easy and free to write Salesforce apps, Salesforce will only add your app to its "app store" if you've obtained 100% test coverage, and Salesforce's developer team can run your tests and have them all pass.
+
+**What are the reasons testing is so important? Why would employers love it so much?**
+
+<!-- Real World Example: DC Tech Startups -->
+<!--5 people from wdi7 cohort hired by Accella in charge of creating rspec tests  -->
+<!--Planning on talking about two startups interviewed with and how wished they would have integrated more testing earlier on when developing their applications, it's now a big focus for them, cut corners early on and now need to refactor code base -->
+
+We've asked you to write user stories. Writing unit tests is a very similar process.
+
+When we think of "testing" we tend to think of something you do *after* you've created something. With unit tests, you're encouraged to write the tests *first* before you even start writing actual code.
+
+### Turn and talk (5 min)
+
+Turn to a partner and discuss reasons of why would you write tests beforehand?
+
+>Answers
+
+>When you write tests first, you're creating a tidy little checklist for yourself of things to complete. The **goal of unit tests** is that **when all of the tests pass, your app is complete**.
+
+>You're used to thinking the other way around: when the app is complete, all the tests should pass. Writing the tests first forces you to think about what an app really *needs* to do to be complete. It forces you to scope things down to your MVP. It forces you to think of your app as a bunch of little pieces, rather than one big behoemeth.
+
+>In short: writing out unit tests, even if you just leave them pending, will make this class much easier, and make you look super-marketable.
+
+>This process of writing the tests **first** is called **Test-Driven Development**, or TDD.
+
+### TDD Overview: (5 min)
+
 Why isn't testing more common?
 
 * Cons
@@ -32,25 +78,6 @@ Why bother testing?
   * **Time.** Shorten development time through bug detection.
   * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
   * **Jobs.** Testing is a job requirement across the board.
-
-### All Together Now (10/20)
-
-When it comes to development in teams, both the benefits and the potential pitfalls of testing practices increase. Many feel that testing is essential when working on large, complex projects.
-
-* Take Ember.js for example. [If you look at the framework's repo](https://github.com/emberjs/ember.js#how-to-run-unit-tests), it comes packaged with a ton of tests.
-* So many moving parts. And so many people contributing to them. Can you imagine how crazy this would get without testing?
-
-Testing is another thing that's a little hard to appreciate through this class
-because we mostly work alone to make relatively small apps. Working together on
-this project, you're likely to find that you lose whole hours manually testing
-your app: quitting Node, re-seeding your database, starting Node, opening your
-app in the browser, clicking through each page. Testing eliminates this for you,
-and makes for a much less stressful week.
-
-Two common pain points in the wild are creating test coverage for existing code
-bases and ensuring that test suites are adequately maintained as an application
-grows in complexity. BOTH of these can be avoided by using TDD as a tool for
-***planning***.  
 
 ### Do you wanna build a snowman?
 
@@ -417,6 +444,25 @@ Check out these great articles comparing TDD & BDD:
 - [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
 - [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
 
+### All Together Now (10/20)
+
+When it comes to development in teams, both the benefits and the potential pitfalls of testing practices increase. Many feel that testing is essential when working on large, complex projects.
+
+* Take Ember.js for example. [If you look at the framework's repo](https://github.com/emberjs/ember.js#how-to-run-unit-tests), it comes packaged with a ton of tests.
+* So many moving parts. And so many people contributing to them. Can you imagine how crazy this would get without testing?
+
+Testing is another thing that's a little hard to appreciate through this class
+because we mostly work alone to make relatively small apps. Working together on
+this project, you're likely to find that you lose whole hours manually testing
+your app: quitting Node, re-seeding your database, starting Node, opening your
+app in the browser, clicking through each page. Testing eliminates this for you,
+and makes for a much less stressful week.
+
+Two common pain points in the wild are creating test coverage for existing code
+bases and ensuring that test suites are adequately maintained as an application
+grows in complexity. BOTH of these can be avoided by using TDD as a tool for
+***planning***.  
+
 # In the "real world"... (10/120)
 
 ...at this point we would write one more expectation, then write the code to
@@ -630,6 +676,12 @@ _**Note** All three generally mean the same thing but not always_
 
 - What does `beforeEach` do?
   > Contains code that is run before each spec
+
+## Exit Ticket (3 min)
+
+Before you leave, plase take ~3 minutes to complete [this exit ticket.](https://docs.google.com/forms/d/1d03NYFphG6m7yAMUY1OlnJZMQWof7Rt6b5MX3Xn4ZPs/viewform)
+
+This helps us help you! We'll review responses for each exit ticket and start to implement them in future lessons.
 
 ## Additional Reading
 
