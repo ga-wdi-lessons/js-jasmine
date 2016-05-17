@@ -412,7 +412,10 @@ This process is often abbreviated **Red, Green, Refactor**: write a failing test
 
   - Jasmine is a behavior driven framework
 
-Check out this great article on [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+Check out these great articles comparing TDD & BDD:
+- [Unit Testing TDD & BDD](http://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/)
+- [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+- [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
 
 # In the "real world"... (10/120)
 
@@ -634,6 +637,8 @@ _**Note** All three generally mean the same thing but not always_
 * [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
 * [Creating Custom Matchers in Jasmine](http://jasmine.github.io/2.0/custom_matcher.html)
 * [Testing AJAX Calls with Jasmine](http://jasmine.github.io/2.1/ajax.html)
+* [Unit Testing TDD & BDD](http://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/)
 * [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+* [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
 * [Say no to more E2E testing](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
 * [Unit vs. functional vs acceptance vs integration](http://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test#answer-4904533)
