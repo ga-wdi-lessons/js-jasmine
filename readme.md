@@ -438,15 +438,10 @@ You have two goals:
 
 Consider: What variables do you need to test? From an English perspective, what names would it make sense for the different variables and methods to have?
 
-## Refactor (10/150)
+---
+>STOP
 
-Q. What is not DRY about my tests? What repeats?
-
-> `var olaf = new Snowman("Olaf");`
-
-In RSpec we could DRY up tests by making a piece of code run before each test. We can do the same thing here:
-
-![beforeEach](img/Screen Shot 2016-05-17 at 11.45.46 AM.png)
+---
 
 ### Let's Test It Out!
 That looks like a good test to me. Let's run it!
@@ -494,6 +489,16 @@ A snowman - 7 ms
 Finished in 0.014 seconds
 4 tests, 5 assertions, 0 failures, 0 skipped
 ```
+
+## Refactor (10/150)
+
+Q. What is not DRY about my tests? What repeats?
+
+> `var olaf = new Snowman("Olaf");`
+
+In RSpec we could DRY up tests by making a piece of code run before each test. We can do the same thing here:
+
+![beforeEach](img/Screen Shot 2016-05-17 at 11.45.46 AM.png)
 
 ## Asynchronous tests
 
