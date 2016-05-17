@@ -191,35 +191,7 @@ An `it` statement's function contains the code that will do the actual testing. 
 
 For the snowman builder, the result would be this:
 
-```js
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-
-  });
-
-  //In order for it to really be a snowman, it needs to have a carrot nose.
-  it("should have a carrot nose", function () {
-
-  });
-
-  //It also needs stick arms.
-  it("should have stick arms", function () {
-
-  });
-
-  //If the snowman is named Olaf, he should like warm hugs.
-  describe( "a snowman named Olaf", function(){
-
-    it( "should like warm hugs", function(){
-
-    });
-
-  });
-
-});
-```
+![describe-it-setup](img/Screen Shot 2016-05-17 at 10.56.24 AM.png)
 
 If I run this, I now get:
 
@@ -340,18 +312,7 @@ If you're feeling adventurous, you can even [create your own custom matcher](htt
 
 ## Let's add the first expectation:
 
-```js
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  })
-
-  // ... more stuff
-});
-```
+![expect-1](img/Screen Shot 2016-05-17 at 10.59.42 AM.png)
 
 It fails!
 
@@ -381,7 +342,6 @@ So I am going to create a `snowman.js` file and put this in it:
 
 function Snowman(name) {
   this.name = name;
-  this.features = ["carrot nose", "stick arms"];
 }
 
 module.exports = Snowman;
@@ -389,20 +349,7 @@ module.exports = Snowman;
 
 Next, I am going to `require` that file inside my spec file:
 
-```js
-var Snowman = require("../snowman");
-
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  });
-
-  // ... more stuff
-});
-```
+![expect-req](img/Screen Shot 2016-05-17 at 11.44.59 AM.png)
 
 ...and now the test passes!
 
@@ -479,41 +426,7 @@ Q. Why is it not recommended to write *all* your expectations first, and then wr
 
 ## The final Snowman specs:
 
-```js
-var Snowman = require("../snowman");
-
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  });
-
-  //In order for it to really be a snowman, it needs to have a carrot nose.
-  it("should have a carrot nose", function () {
-    var olaf = new Snowman("Olaf");
-    expect ( olaf.features ).toContain("carrot nose");
-  });
-
-  //It also needs stick arms.
-  it("should have stick arms", function () {
-    var olaf = new Snowman("Olaf");
-    expect ( olaf.features ).toContain("stick arms");
-  });
-
-  //If the snowman is named Olaf, he should like warm hugs.
-  describe("A snowman named Olaf", function(){
-    it( "should like warm hugs", function(){
-      var frosty = new Snowman("Frosty");
-      var olaf = new Snowman("Olaf");
-      expect( olaf.hug() ).toBe( "I like warm hugs!" );
-      expect( frosty.hug() ).not.toBe( "I like warm hugs!" );
-    });
-  });
-
-});
-```
+![full-specs](img/Screen Shot 2016-05-17 at 11.53.21 AM.png)
 
 I'm not even going to bother running `spec` because I know all but one of these tests will fail. That's not important right now. The important thing is that I am writing `expect` statements that make sense to me because this will inform the coding decisions I make later.
 
@@ -528,38 +441,12 @@ Consider: What variables do you need to test? From an English perspective, what 
 ## Refactor (10/150)
 
 Q. What is not DRY about my tests? What repeats?
----
+
 > `var olaf = new Snowman("Olaf");`
 
 In RSpec we could DRY up tests by making a piece of code run before each test. We can do the same thing here:
 
-``` js
-describe( "A snowman", function(){
-  var olaf;
-
-  beforeEach(function(){
-    olaf = new Snowman("Olaf");
-  });
-
-  it( "should have a name", function(){
-    expect( olaf.name ).toBeDefined();
-  });
-
-  it("should have a carrot nose and stick arms", function () {
-    expect ( olaf.features ).toContain("carrot nose", "stick arms");
-  });
-
-  describe("A snowman named Olaf", function(){
-    var frosty;
-    it( "should like warm hugs", function(){
-      frosty = new Snowman("Frosty");
-      expect( olaf.hug() ).toBe( "I like warm hugs!" );
-      expect( frosty.hug() ).not.toBe( "I like warm hugs!" );
-    });
-  });
-
-});
-```
+![beforeEach](img/Screen Shot 2016-05-17 at 11.45.46 AM.png)
 
 ### Let's Test It Out!
 That looks like a good test to me. Let's run it!
