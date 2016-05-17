@@ -1,4 +1,4 @@
-## Learning Objectives
+# Testing with Jasmine
 
 ## Screencasts
 
@@ -17,49 +17,76 @@
 
 # Do You Even Test, Bro?
 
-We first encountered Test Driven Development during Unit 2, when we wrote unit tests in Ruby using RSpec.
+### Why do we implement tests in our applications? (5 min)
 
-**LIVE SURVEY**: (10/10)
-Sort yourself into one of the following categories:
+As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.  
 
-1. I have used TDD, and I loved it.
-2. I have used TDD, and I hated it.
-3. I have not used TDD, but I want to.
-4. I have not used TDD, and I do not want to.
+Think back to the way you code.  You create a part of a web page, then you browse to that page to test it.  To ensure that it is doing as you expect.  Then you add another feature.  And test both features.  Then you add a third feature and test... just the third feature.  Imagine if you had a battery of automated specs, which run against your code, so you can see if your new changes fit your new requirements and EVERY requirement that came before this.
 
-* For those of you who answered "no" to either part, why not? What did you or would you do instead?
-* For those you answered "yes" to either part, why do you find testing valuable? What problem(s) does testing solve?
+### Unit testing (5 min)
 
-**ST-WG**: What patterns/themes/words/ideas do we see recurring in your answers?
+**Unit tests** check the smallest level. The functionality of a specific method.
 
-> Some possible responses...
+  * The "units" in unit tests are individual methods. Unit tests are intended to test small, little blocks of code, and make sure a specific input results in a specific output.
+
+  * As a rule of thumb, a good unit test should not be more than 5 lines long.
+
+**Employers give you major bonus points for it!**
+
+You'll see the term **test coverage** pop up pretty often. People are always aiming for "100% test coverage". If your app has 100% test coverage, that means every single method in your app has a unit test verifying that it works.
+
+>For instance, while it's easy and free to write Salesforce apps, Salesforce will only add your app to its "app store" if you've obtained 100% test coverage, and Salesforce's developer team can run your tests and have them all pass.
+
+**What are the reasons testing is so important? Why would employers love it so much?**
+
+<!-- Real World Example: DC Tech Startups -->
+<!--5 people from wdi7 cohort hired by Accella in charge of creating rspec tests  -->
+<!--Planning on talking about two startups interviewed with and how wished they would have integrated more testing earlier on when developing their applications, it's now a big focus for them, cut corners early on and now need to refactor code base -->
+
+We've asked you to write user stories. Writing unit tests is a very similar process.
+
+When we think of "testing" we tend to think of something you do *after* you've created something. With unit tests, you're encouraged to write the tests *first* before you even start writing actual code.
+
+### Turn and talk (5 min)
+
+Turn to a partner and discuss reasons of why would you write tests beforehand?
+
+>Answers
+
+>When you write tests first, you're creating a tidy little checklist for yourself of things to complete. The **goal of unit tests** is that **when all of the tests pass, your app is complete**.
+
+>You're used to thinking the other way around: when the app is complete, all the tests should pass. Writing the tests first forces you to think about what an app really *needs* to do to be complete. It forces you to scope things down to your MVP. It forces you to think of your app as a bunch of little pieces, rather than one big behoemeth.
+
+>In short: writing out unit tests, even if you just leave them pending, will make this class much easier, and make you look super-marketable.
+
+>This process of writing the tests **first** is called **Test-Driven Development**, or TDD.
+
+### TDD Overview: (5 min)
+
+Why isn't testing more common?
+
 * Cons
- * **Time.** It's a waste of my time and effort to test.
- * **It's too much.** I can test just fine using the console.
- * **App complexity.** My app is too simple to require testing.
+  * **Time.** It's a waste of my time and effort to test.
+  * **It's too much.** I can test just fine using the console.
+  * **App complexity.** My app is too simple to require testing.
+
+Why bother testing?
+
 * Pros
- * **Bug detection.** Quickly identify unanticipated errors.
- * **Code Quality.** Create standards for our code before writing it.
- * **Time.** Shorten development time through bug detection.
- * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
- * **Jobs.** Testing is a job requirement across the board.
+  * **Bug detection.** Quickly identify unanticipated errors.
+  * **Code Quality.** Create standards for our code before writing it.
+  * **Time.** Shorten development time through bug detection.
+  * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
+  * **Jobs.** Testing is a job requirement across the board.
 
-## All Together Now (10/20)
+### Do you wanna build a snowman?
 
-When it comes to development in teams, both the benefits and the potential pitfalls of testing practices increase. Many feel that testing is essential when working on large, complex projects.
+For example, imagine you're Elsa from Frozen, creating a simple program/app that
+will build a snowman.
 
-* Take Ember.js for example. [If you look at the framework's repo](https://github.com/emberjs/ember.js#how-to-run-unit-tests), it comes packaged with a ton of tests.
-* So many moving parts. And so many people contributing to them. Can you imagine how crazy this would get without testing?
-
-Testing is another thing that's a little hard to appreciate through this class because we mostly work alone to make relatively small apps. Working together on this project, you're likely to find that you lose whole hours manually testing your app: quitting Node, re-seeding your database, starting Node, opening your app in the browser, clicking through each page. Testing eliminates this for you, and makes for a much less stressful week.
-
-Two common pain points in the wild are creating test coverage for existing code bases and ensuring that test suites are adequately maintained as an application grows in complexity. BOTH of these can be avoided by using TDD as a tool for ***planning***.  
-
-## Do you wanna build a snowman?
-
-For example, imagine you're Elsa from Frozen, creating an app that will build a snowman.
-
-Before we write any of our snowman code, we're going to create a test. And before we create a test, we're going to think: What do I want my snowman builder to do? What should the snowmen it creates be like?
+Before we write any of our snowman code, we're going to create a test. And
+before we create a test, we're going to think: What do I want my snowman builder
+to do? What should the snowmen it creates be like?
 
 ```js
 //I want my snowman builder to create a snowman object
@@ -71,9 +98,14 @@ Before we write any of our snowman code, we're going to create a test. And befor
 
 Now that we have an English-y outline, we're going to start turning it into tests.
 
-## Remember RSpec?
+### Jasmine?
 
-Remember from RSpec that tests followed a "describe...it" format, like so:
+Today we'll be using a Javascript testing framework called Jasmine. It's the
+same thing as RSpec, just for Javascript. It uses "describe" and "it", just like
+RSpec. Jasmine, uses `describe` and `it` methods to express whats going on in
+the code more like a conversation.
+
+Tests follow a "describe...it" format, like so:
 
 - describe "A snowman"
   - it "should have a name"
@@ -82,25 +114,12 @@ Remember from RSpec that tests followed a "describe...it" format, like so:
   - describe "a snowman named Olaf"
     - it "should like warm hugs"
 
-Today we'll be using a Javascript testing framework called Jasmine. It's the same thing as RSpec, just for Javascript. It uses "describe" and "it", just like RSpec.
+Jasmine is only one of many testing framework. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
 
-## You Do: Plan your project (30/50)
+- [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
 
-- (5 min) Write a brief outline of your app. Write it **in English** -- but begin each line with either "describe" or "it".
-  - Aim to have 2 total "describe" lines -- one for each of the models required for this project.
-  - Aim to have 4 total "it" lines.
+#### Getting set up (5/55)
 
-- Now, get into a group of three with people who are **not** in your project's group.Then, over **5 minutes**:
-  - Briefly describe your project idea to the other two people.
-  - Read through your tests.
-  - With them, brainstorm other tests you might include.
-- You'll repeat this for each member of your group.
-
-# Jasmine
-
-Jasmine is only one testing framework. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
-
-## Getting set up (5/55)
 First, we're going to install jasmine-node globally.
 
 It doesn't matter where you run this code:
@@ -141,11 +160,12 @@ Finished in 0.001 seconds
 0 tests, 0 assertions, 0 failures, 0 skipped
 ```
 
-## Javascripting your tests (10/65)
+## I do: Javascripting your tests (10/65)
 
-Now, paste the tests you wrote earlier into the `-spec.js` file you created.
+Now, I'll paste the psuedocode we wrote earlier into the `-spec.js` file we created.
 
-If you run `jasmine-node` at this point, you'll just get an error. We need to properly format the code for Javascript.
+If I run `jasmine-node` at this point, I'll just get an error. We need to
+properly format the code for Javascript.
 
 A Jasmine test file will look like this:
 
@@ -171,35 +191,7 @@ An `it` statement's function contains the code that will do the actual testing. 
 
 For the snowman builder, the result would be this:
 
-```js
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-
-  });
-
-  //In order for it to really be a snowman, it needs to have a carrot nose.
-  it("should have a carrot nose", function () {
-
-  });
-
-  //It also needs stick arms.
-  it("should have stick arms", function () {
-
-  });
-
-  //If the snowman is named Olaf, he should like warm hugs.
-  describe( "a snowman named Olaf", function(){
-
-    it( "should like warm hugs", function(){
-
-    });
-
-  });
-
-});
-```
+![describe-it-setup](img/Screen Shot 2016-05-17 at 10.56.24 AM.png)
 
 If I run this, I now get:
 
@@ -267,6 +259,8 @@ In the "spec," we target a specific part of the suite.
 
 > "Spec" is short for "specification", which comes from "specific", as in, "we're testing a specific part of this app." Get it?
 
+[Docs on what we've covered](http://jasmine.github.io/1.3/introduction.html) up until **Expectations**
+
 ## Break (10/95)
 
 # Great Expectations! (10/105)
@@ -279,7 +273,7 @@ Now that we have the pieces of our snowman builder described, we can start think
   * Begins with `expect`. Takes one argument, the variable whose value we are testing.
   * Followed by a **matcher** (e.g., `toBe`), which tests the expectation in a particular way.
 
-## Jasmine's built-in matchers
+### Jasmine's built-in matchers
 
 ```txt
 'toBe' matcher compares with ===
@@ -302,7 +296,7 @@ One thing to note is that there isn't a built-in matcher for checking whether so
 
 To test whether something is an object of a specific type, there are several things you could try:
 
-```
+```txt
 expect( olaf.name ).toEqual(jasmine.any(String));
 expect( typeof olaf.name ).toBe("string");
 
@@ -318,21 +312,11 @@ If you're feeling adventurous, you can even [create your own custom matcher](htt
 
 ## Let's add the first expectation:
 
-```js
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  });
-
-//...
-```
+![expect-1](img/Screen Shot 2016-05-17 at 10.59.42 AM.png)
 
 It fails!
 
-```
+```txt
 $ jasmine-node spec
 F...
 
@@ -347,46 +331,33 @@ Failures:
 
 Finished in 0.012 seconds
 4 tests, 1 assertion, 1 failure, 0 skipped
-````
+```
 
 That's because this script has no idea what a Snowman is -- we haven't linked in a file that describes a Snowman model yet.
 
-So I'm going to create a `snowman.js` file and put this in it:
+So I am going to create a `snowman.js` file and put this in it:
 
 ```js
 // /snowman.js
 
 function Snowman(name) {
   this.name = name;
-  this.features = ["carrot nose", "stick arms"];
 }
 
 module.exports = Snowman;
 ```
 
-Next, I'm going to `require` that file inside my spec file:
+Next, I am going to `require` that file inside my spec file:
 
-```js
-var Snowman = require("../snowman");
-
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  });
-
-//...
-```
+![expect-req](img/Screen Shot 2016-05-17 at 11.44.59 AM.png)
 
 ...and now the test passes!
 
-# Review: Test-Driven Development Basics
+# The Process, Recontextualized (5/110)
 
-## The Process, Recontextualized (5/110)
+### Test-driven development
 
-![tdd flowchart](img/tdd-flowchart.png)
+![tdd flowchart](img/tdd.png)
 
 A planning-oriented approach TDD
   - **Think.**
@@ -395,21 +366,59 @@ A planning-oriented approach TDD
     - What properties should each of those components have? What should they be able to do?
     - What behaviors do you definitely want to avoid?
   - **Write _tests_ an outline of your app/feature using testing syntax.**
-    - For today, we're going to break this down even further, first writing suites and specs, then going back and adding expectations.
+    - For today, we are going to break this down even further, first writing suites and specs, then going back and adding expectations.
   - **Run your tests.** Seeing red.
   - **Write code.** How can we make this test pass?
   - **Test passes.** Green light.
   - **Refactor and Repeat.**
 
-You write a failing test. Your next step is to write code that will make your test pass. This is kind of like Jeopardy, where the contestants are given the answer and then come up with a question for that answer: it's backwards from what we intuitively want to do, which is write passing code first and test it later.
+You write a failing test. Your next step is to write code that will make your test pass. This is kind of like Jeopardy, where the contestants are given the answer and then come up with a question for that answer: it is backwards from what we intuitively want to do, which is write passing code first and test it later.
 
 This process is often abbreviated **Red, Green, Refactor**: write a failing test, write the code to make it pass, then refactor. Lather, rinse repeat.
 
-## In the "real world"... (10/120)
+### TDD vs. BDD
 
-...at this point we would write one more expectation, then write the code to make it pass, then write the next expectation, and so on, doing everything **one test at a time**.
+- TDD is mainly a process to help developers create a well-written unit of code that does a set of tasks. And to allow developers to be confident in their code.
+> TDD ensures that you built the software correctly, not that the correct software was built.
 
-However, we're limited by time in this class, so I'm going to show you what the end result for this Snowman would look like, and then ask you to write all your own expectations.
+- BDD combines the TDD process with ideas from DDD (domain-driven design). The biggest difference is that the syntax reads more like english and could be shared with non-programmers as specification for what the code should do.
+>BDD codifies customer requirements into discrete, real-life scenarios.
+
+  - Jasmine is a behavior driven framework
+
+Check out these great articles comparing TDD & BDD:
+- [Unit Testing TDD & BDD](http://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/)
+- [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+- [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
+
+### All Together Now (10/20)
+
+When it comes to development in teams, both the benefits and the potential pitfalls of testing practices increase. Many feel that testing is essential when working on large, complex projects.
+
+* Take Ember.js for example. [If you look at the framework's repo](https://github.com/emberjs/ember.js#how-to-run-unit-tests), it comes packaged with a ton of tests.
+* So many moving parts. And so many people contributing to them. Can you imagine how crazy this would get without testing?
+
+Testing is another thing that's a little hard to appreciate through this class
+because we mostly work alone to make relatively small apps. Working together on
+this project, you're likely to find that you lose whole hours manually testing
+your app: quitting Node, re-seeding your database, starting Node, opening your
+app in the browser, clicking through each page. Testing eliminates this for you,
+and makes for a much less stressful week.
+
+Two common pain points in the wild are creating test coverage for existing code
+bases and ensuring that test suites are adequately maintained as an application
+grows in complexity. BOTH of these can be avoided by using TDD as a tool for
+***planning***.  
+
+# In the "real world"... (10/120)
+
+...at this point we would write one more expectation, then write the code to
+make it pass, then write the next expectation, and so on, doing everything **one
+test at a time**.
+
+However, we're limited by time in this class, so I'm going to show you what the
+end result for this Snowman would look like, and then ask you to write all your
+own expectations.
 
 Q. Why is it not recommended to write *all* your expectations first, and then write all the code to make them pass?
 ---
@@ -417,43 +426,9 @@ Q. Why is it not recommended to write *all* your expectations first, and then wr
 
 ## The final Snowman specs:
 
-```js
-var Snowman = require("../snowman");
+![full-specs](img/Screen Shot 2016-05-17 at 11.53.21 AM.png)
 
-describe( "A snowman", function(){
-
-  //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
-    var olaf = new Snowman("Olaf");
-    expect( olaf.name ).toBeDefined();
-  });
-
-  //In order for it to really be a snowman, it needs to have a carrot nose.
-  it("should have a carrot nose", function () {
-    var olaf = new Snowman("Olaf");
-    expect ( olaf.features ).toContain("carrot nose");
-  });
-
-  //It also needs stick arms.
-  it("should have stick arms", function () {
-    var olaf = new Snowman("Olaf");
-    expect ( olaf.features ).toContain("stick arms");
-  });
-
-  //If the snowman is named Olaf, he should like warm hugs.
-  describe("A snowman named Olaf", function(){
-    it( "should like warm hugs", function(){
-      var frosty = new Snowman("Frosty");
-      var olaf = new Snowman("Olaf");
-      expect( olaf.hug() ).toBe( "I like warm hugs!" );
-      expect( frosty.hug() ).not.toBe( "I like warm hugs!" );
-    });
-  });
-
-});
-```
-
-I'm not even going to bother running `spec` because I know all but one of these tests will fail. That's not important right now. The important thing is that I'm writing `expect` statements that make sense to me because this will inform the coding decisions I make later.
+I'm not even going to bother running `spec` because I know all but one of these tests will fail. That's not important right now. The important thing is that I am writing `expect` statements that make sense to me because this will inform the coding decisions I make later.
 
 ## You do: Add expectations to your code (20/140)
 
@@ -463,52 +438,19 @@ You have two goals:
 
 Consider: What variables do you need to test? From an English perspective, what names would it make sense for the different variables and methods to have?
 
-**Take 5 minutes** to add expectations yourself. Then, meet up with your group of 3 and take 5 minutes to review each others' expectations.
-
-## Refactor (10/150)
-
-Q. What's not DRY about my tests? What repeats?
 ---
-> `var olaf = new Snowman("Olaf");`
+>STOP
 
-In RSpec we could DRY up tests by making a piece of code run before each test. We can do the same thing here:
-
-``` js
-describe( "A snowman", function(){
-  var olaf;
-
-  beforeEach(function(){
-    olaf = new Snowman("Olaf");
-  });
-
-  it( "should have a name", function(){
-    expect( olaf.name ).toBeDefined();
-  });
-
-  it("should have a carrot nose and stick arms", function () {
-    expect ( olaf.features ).toContain("carrot nose", "stick arms");
-  });
-
-  describe("A snowman named Olaf", function(){
-    var frosty;
-    it( "should like warm hugs", function(){
-      frosty = new Snowman("Frosty");
-      expect( olaf.hug() ).toBe( "I like warm hugs!" );
-      expect( frosty.hug() ).not.toBe( "I like warm hugs!" );
-    });
-  });
-
-});
-```
+---
 
 ### Let's Test It Out!
 That looks like a good test to me. Let's run it!
 * From your in-class folder, run: `$ jasmine-node spec`
 * What error do we get?
 
-Of course, the rest of the tests are still "failing". The fact that they're running shows that my syntax is good to go, but I need to write the rest of the code to be tested.
+Of course, the rest of the tests are still "failing". The fact that they are running shows that my syntax is good to go, but I need to write the rest of the code to be tested.
 
-### Let's Build a Snowman!
+### Let us Build a Snowman!
 
 ```js
 // /snowman.js
@@ -531,7 +473,7 @@ Snowman.prototype = {
 module.exports = Snowman;
 ```
 
-Let's run our test again: `$ jasmine-node spec`
+Let us run our test again: `$ jasmine-node spec`
 
 ```
 $ jasmine-node spec --verbose
@@ -547,6 +489,16 @@ A snowman - 7 ms
 Finished in 0.014 seconds
 4 tests, 5 assertions, 0 failures, 0 skipped
 ```
+
+## Refactor (10/150)
+
+Q. What is not DRY about my tests? What repeats?
+
+> `var olaf = new Snowman("Olaf");`
+
+In RSpec we could DRY up tests by making a piece of code run before each test. We can do the same thing here:
+
+![beforeEach](img/Screen Shot 2016-05-17 at 11.45.46 AM.png)
 
 ## Asynchronous tests
 
@@ -578,6 +530,26 @@ The snowman code is available here:
 
 https://github.com/ga-dc/snowman_building_with_jasmine
 
+# Testing Terminology
+
+### Test Types: Unit vs. Integration vs. End-to-End
+
+> “If you wish to converse with me –define your terms” ~Voltaire
+
+- **Unit Tests**
+Unit tests isolate the smallest piece of a feature, typically a method/function in isolation. In short, unit tests are as simple as possible, easy to debug, reliable (due to reduced external factors), fast to execute and help to prove that the smallest building blocks of your program function as intended before they're put together. The caveat is that, although you can prove they work perfectly in isolation, the units of code may blow up when combined.
+
+- **Integration Tests**
+An integration test takes a small group of units, often two units, and tests their behavior as a whole, verifying that they coherently work together. Sometimes you need to have tests to verify that two separate systems – like a database and your app – work together correctly, and that calls for an integration test. As a result, when validating integration test results, you could for example validate a database related test by querying the database to check the database state is correct.
+
+- **End-to-end/Acceptance/Functional Tests**
+Involve performing tests on the full system (e.g. using your web page via a web browser) to see whether the application's functionality satisfies the specification. E.g. "clicking a zoom icon should enlarge the document view by 25%." There is no real continuum of results, just a pass or fail outcome.
+_**Note** All three generally mean the same thing but not always_
+
+![testing pyramid](img/testing-pyramid.png)
+
+> As a good first guess, Google often suggests a 70/20/10 split: 70% unit tests, 20% integration tests, and 10% end-to-end tests. The exact mix will be different for each team, but in general, it should retain that pyramid shape.
+
 ## Quiz Questions
 - Put the following actions in order, from what should happen first to what should happen last:
   1. Write the code for your app
@@ -597,8 +569,20 @@ https://github.com/ga-dc/snowman_building_with_jasmine
 - What does `beforeEach` do?
   > Contains code that is run before each spec
 
+## Exit Ticket (3 min)
+
+Before you leave, plase take ~3 minutes to complete [this exit ticket.](https://docs.google.com/forms/d/1d03NYFphG6m7yAMUY1OlnJZMQWof7Rt6b5MX3Xn4ZPs/viewform)
+
+This helps us help you! We'll review responses for each exit ticket and start to implement them in future lessons.
+
 ## Additional Reading
 
 * [Jasmine's really great documentation](http://jasmine.github.io/2.1/introduction.html)
+* [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
 * [Creating Custom Matchers in Jasmine](http://jasmine.github.io/2.0/custom_matcher.html)
 * [Testing AJAX Calls with Jasmine](http://jasmine.github.io/2.1/ajax.html)
+* [Unit Testing TDD & BDD](http://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/)
+* [TDD vs. BDD](http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/)
+* [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
+* [Say no to more E2E testing](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
+* [Unit vs. functional vs acceptance vs integration](http://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test#answer-4904533)
