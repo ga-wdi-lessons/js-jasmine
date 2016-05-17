@@ -13,7 +13,6 @@
 * Differentiate the roles of and relationships between `suite`, `spec`, and `expectation` in the context of Jasmine testing.
 * Implement `beforeEach()` and `afterEach()` to DRY up test code.
 * Use the `jasmine-node` CLI to run Jasmine tests.
-* Plan a project by creating a series of unit tests that define its parameters.
 
 # Do You Even Test, Bro?
 
