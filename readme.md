@@ -14,11 +14,11 @@
 * Implement `beforeEach()` and `afterEach()` to DRY up test code.
 * Use the `jasmine-node` CLI to run Jasmine tests.
 
-# Do You Even Test, Bro?
+# Do You Even Test?
 
 ### Why do we implement tests in our applications? (5 min)
 
-As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.  
+As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.
 
 Think back to the way you code.  You create a part of a web page, then you browse to that page to test it.  To ensure that it is doing as you expect.  Then you add another feature.  And test both features.  Then you add a third feature and test... just the third feature.  Imagine if you had a battery of automated specs, which run against your code, so you can see if your new changes fit your new requirements and EVERY requirement that came before this.
 
@@ -77,6 +77,8 @@ Why bother testing?
   * **Time.** Shorten development time through bug detection.
   * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
   * **Jobs.** Testing is a job requirement across the board.
+
+### You do: 
 
 ### Do you wanna build a snowman?
 
@@ -567,12 +569,6 @@ _**Note** All three generally mean the same thing but not always_
 
 - What does `beforeEach` do?
   > Contains code that is run before each spec
-
-## Exit Ticket (3 min)
-
-Before you leave, plase take ~3 minutes to complete [this exit ticket.](https://docs.google.com/forms/d/1d03NYFphG6m7yAMUY1OlnJZMQWof7Rt6b5MX3Xn4ZPs/viewform)
-
-This helps us help you! We'll review responses for each exit ticket and start to implement them in future lessons.
 
 ## Additional Reading
 
