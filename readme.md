@@ -1,11 +1,5 @@
 # Testing with Jasmine
 
-## Screencasts
-
-- [Part 1/3](https://youtu.be/sT-YhpEIMPQ)
-- [Part 2/3](https://youtu.be/3J3W0Hi2Jxw)
-- [Part 3/3](https://youtu.be/GMafQUii6Qc)
-
 ## Learning Objectives
 
 * List benefits of unit testing in collaborative development process.
@@ -14,11 +8,11 @@
 * Implement `beforeEach()` and `afterEach()` to DRY up test code.
 * Use the `jasmine-node` CLI to run Jasmine tests.
 
-# Do You Even Test, Bro?
+# Do You Even Test?
 
 ### Why do we implement tests in our applications? (5 min)
 
-As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.  
+As our applications increase in complexity, we need a safety net.  We need something to ensure that we "Do no harm".  We need a battery of automated tests.  These are specifications about YOUR code that you can run to ensure your code is doing what it should.
 
 Think back to the way you code.  You create a part of a web page, then you browse to that page to test it.  To ensure that it is doing as you expect.  Then you add another feature.  And test both features.  Then you add a third feature and test... just the third feature.  Imagine if you had a battery of automated specs, which run against your code, so you can see if your new changes fit your new requirements and EVERY requirement that came before this.
 
@@ -78,6 +72,14 @@ Why bother testing?
   * **Documentation.** Tests act as a documentation of sorts for how our code should work. Helpful to other developers and shareholders.
   * **Jobs.** Testing is a job requirement across the board.
 
+### You do: TDD Warmup - Calculator Spec
+
+<https://github.com/ga-wdi-exercises/jasmine-calculator>
+
+- run `jasmine-node spec`
+- fix the first failing test
+- repeat
+
 ### Do you wanna build a snowman?
 
 For example, imagine you're Elsa from Frozen, creating a simple program/app that
@@ -113,21 +115,11 @@ Tests follow a "describe...it" format, like so:
   - describe "a snowman named Olaf"
     - it "should like warm hugs"
 
-Jasmine is only one of many testing framework. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
+Jasmine is only one of many testing frameworks. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
 
 - [RSpec vs. Jasmine Syntax](https://gist.github.com/kevinbuch/6611072)
 
 #### Getting set up (5/55)
-
-First, we're going to install jasmine-node globally.
-
-It doesn't matter where you run this code:
-
-```bash
-$ npm install  -g jasmine-node
-```
-
-Now, `cd` into your project folder. If you don't have a project folder, go ahead and make one. It doesn't really matter what folder you use for what we're about to do, but if you can, you may as well get some of your project done now so you don't have to later!
 
 I'm going to create a folder for a `snowman-builder` project.
 
@@ -160,11 +152,6 @@ Finished in 0.001 seconds
 ```
 
 ## I do: Javascripting your tests (10/65)
-
-Now, I'll paste the psuedocode we wrote earlier into the `-spec.js` file we created.
-
-If I run `jasmine-node` at this point, I'll just get an error. We need to
-properly format the code for Javascript.
 
 A Jasmine test file will look like this:
 
@@ -220,14 +207,6 @@ A snowman - 4 ms
 Finished in 0.01 seconds
 4 tests, 0 assertions, 0 failures, 0 skipped
 ```
-
-## You Do: Update your code so that it has the proper syntax (15/80)
-
-This includes adding the appropriate parentheses, double-quotes, semicolons, and functions.
-
-When you're done, you should be able to run `jasmine-node spec` with no failing tests.
-
-The fact that these tests "pass" doesn't really mean anything since the tests don't actually test anything -- but at least we know there aren't any syntax errors.
 
 # The suite life of Jasmine (5/85)
 
@@ -415,62 +394,24 @@ grows in complexity. BOTH of these can be avoided by using TDD as a tool for
 make it pass, then write the next expectation, and so on, doing everything **one
 test at a time**.
 
-However, we're limited by time in this class, so I'm going to show you what the
-end result for this Snowman would look like, and then ask you to write all your
-own expectations.
-
 Q. Why is it not recommended to write *all* your expectations first, and then write all the code to make them pass?
 ---
 > Because it's pretty straightforward to write the code to make one failing test into a passing test. It's super-overwhelming to write the code to make a bunch of failing tests pass.
 
-## The final Snowman specs:
-
-![full-specs](img/Screen Shot 2016-05-17 at 11.53.21 AM.png)
-
-I'm not even going to bother running `spec` because I know all but one of these tests will fail. That's not important right now. The important thing is that I am writing `expect` statements that make sense to me because this will inform the coding decisions I make later.
-
 ## You do: Add expectations to your code (20/140)
 
 You have two goals:
+
 - To write expectations that make sense in English...
-- ...while still being valid Javascript: you close all your parentheses, put semicolons where you need them, and so on.
+- Make the tests pass
 
-Consider: What variables do you need to test? From an English perspective, what names would it make sense for the different variables and methods to have?
-
----
->STOP
-
----
+Please work on one test at a time. e.g. write one test, watch it fail, then write
+the code to make it pass
 
 ### Let's Test It Out!
-That looks like a good test to me. Let's run it!
+
 * From your in-class folder, run: `$ jasmine-node spec`
 * What error do we get?
-
-Of course, the rest of the tests are still "failing". The fact that they are running shows that my syntax is good to go, but I need to write the rest of the code to be tested.
-
-### Let us Build a Snowman!
-
-```js
-// /snowman.js
-function Snowman(name) {
-  this.name = name;
-  this.features = ["carrot nose", "stick arms"];
-}
-
-Snowman.prototype = {
-  hug: function(){
-    if (this.name == "Olaf") {
-      return "I like warm hugs!";
-    }
-    else {
-      return "Why are you hugging snow?";
-    }
-  }
-};
-
-module.exports = Snowman;
-```
 
 Let us run our test again: `$ jasmine-node spec`
 
@@ -489,6 +430,10 @@ Finished in 0.014 seconds
 4 tests, 5 assertions, 0 failures, 0 skipped
 ```
 
+---
+>STOP
+---
+
 ## Refactor (10/150)
 
 Q. What is not DRY about my tests? What repeats?
@@ -501,24 +446,16 @@ In RSpec we could DRY up tests by making a piece of code run before each test. W
 
 ## Asynchronous tests
 
-One last thing to note is that while you can test AJAX requests and database interactions, it's a little tricky because they're asynchronous. **Make sure you use .then()**.
+One last thing to note is that while you can test HTTP requests and database interactions, it's a little tricky because they're asynchronous. **Make sure you use done**.
 
 Here are some examples:
 
 ```js
-// ...
-it("can be saved to the database", function(){
+it("makes a successful HTTP request", function(done){
   var olaf = new Snowman("Olaf");
-  olaf.save().then(function(err, docs){
-    // err will always be null if the database action was successful
-    expect( err ).toBeNull();
-  });
-});
-
-it("makes a successful AJAX request", function(){
-  var olaf = new Snowman("Olaf");
-  $.getJSON("http://snowhub.com").then(function(response){
+  request("http://snowhub.com").then(function(response){
     expect( response[0].name ).toBe( "John Snow" );
+    done()
   });
 });
 ```
@@ -568,11 +505,12 @@ _**Note** All three generally mean the same thing but not always_
 - What does `beforeEach` do?
   > Contains code that is run before each spec
 
-## Exit Ticket (3 min)
+## Additional TDD exercises
 
-Before you leave, plase take ~3 minutes to complete [this exit ticket.](https://docs.google.com/forms/d/1d03NYFphG6m7yAMUY1OlnJZMQWof7Rt6b5MX3Xn4ZPs/viewform)
-
-This helps us help you! We'll review responses for each exit ticket and start to implement them in future lessons.
+- https://github.com/ga-wdi-exercises/pig_latin_js
+- https://github.com/ga-wdi-exercises/ip_validator
+- https://github.com/ga-wdi-exercises/luhn_algorithm
+- https://github.com/ga-wdi-exercises/sundial
 
 ## Additional Reading
 
@@ -585,3 +523,9 @@ This helps us help you! We'll review responses for each exit ticket and start to
 * [TDD & BDD](http://www.joecolantonio.com/2014/07/29/unit-tdd-and-bdd-testing-whats-the-difference/)
 * [Say no to more E2E testing](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
 * [Unit vs. functional vs acceptance vs integration](http://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test#answer-4904533)
+
+## Screencasts
+
+- [Part 1/3](https://youtu.be/sT-YhpEIMPQ)
+- [Part 2/3](https://youtu.be/3J3W0Hi2Jxw)
+- [Part 3/3](https://youtu.be/GMafQUii6Qc)
